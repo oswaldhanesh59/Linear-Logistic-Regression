@@ -1,0 +1,10 @@
+colnames(kc_house_data)
+summary(kc_house_data)
+attach(kc_house_data)
+boxplot(price,bedrooms,bathrooms,sqft_living,sqft_lot,floors,waterfront,view,condition,grade,sqft_above,sqft_basement,yr_built,     
+        yr_renovated,zipcode,lat,long,sqft_living15,sqft_lot15)
+hd=kc_house_data
+library(car)
+modelhd=lm(price~.-c(hd$id,hd$date),data=hd)
+vif(modelhd)
+summary(modelhd)
